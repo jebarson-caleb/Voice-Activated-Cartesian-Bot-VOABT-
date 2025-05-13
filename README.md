@@ -74,8 +74,6 @@ Voice-Activated-Cartesian-Bot-VOABT-/
 ├── fonts/
 ├── images/
 │   └── demo.gif
-├── videos/
-│   └── demo.mp4
 └── mechanical_design/
 ```
 
