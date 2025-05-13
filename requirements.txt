@@ -1,0 +1,5 @@
+speechrecognition
+torch
+whisper
+pyserial
+freetype-py
