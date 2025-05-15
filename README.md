@@ -75,6 +75,9 @@ Voice-Activated-Cartesian-Bot-VOABT-/
 ├── images/
 │   └── demo.gif
 └── mechanical_design/
+│   └── STL files
+├── grbl/
+│   └──
 ```
 
 ## Future Improvements
