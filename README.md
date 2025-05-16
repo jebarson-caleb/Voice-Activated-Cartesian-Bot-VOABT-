@@ -1,95 +1,170 @@
+# 🎙️ Voice-Activated Cartesian Bot (VOABT)
 
-# 🗣️ Voice-Activated Cartesian Bot (VOABT)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
+[![GRBL](https://img.shields.io/badge/GRBL-Compatible-green.svg)](https://github.com/gnea/grbl)
+[![Whisper](https://img.shields.io/badge/Whisper-AI-orange.svg)](https://openai.com/research/whisper)
 
-The Voice-Activated Cartesian Bot (VOABT) is a cost-effective assistive robotic system designed to help individuals with upper limb disabilities write independently using voice commands. By integrating AI-powered speech recognition with GRBL-based CNC motion control, spoken input is transcribed and plotted as handwritten text on paper.
+## 📖 Overview
 
-Developed as a mini-project this solution prioritizes autonomy, affordability, and accessibility.
+The Voice-Activated Cartesian Bot (VOABT) is an innovative assistive technology designed to empower individuals with upper limb disabilities to write independently through voice commands. By seamlessly integrating AI-powered speech recognition with precision CNC motion control, this system transforms spoken words into handwritten text on paper.
 
-## Key Features
-- 🎙️ **Live Speech Recognition** using Whisper AI.
-- ✍️ **Text-to-G-code Conversion** for handwritten plotting.
-- 🛠️ **GRBL-Compatible CNC Movement** for precision.
-- 🧠 **Python Modular Script** controls the entire process.
-- 🧾 **TrueType Font Support** for personalized handwriting.
-- 💻 **Laptop-Powered** (No microcontroller for speech).
-- 🧰 **Low-Cost, DIY Design** using common CNC components.
+> **Accessibility. Affordability. Autonomy.**
 
-## 🎬 Demo
+Developed as an accessible mini-project, VOABT prioritizes cost-effectiveness while delivering meaningful independence to users.
 
-![Live Writing Demo](images/demo.gif)
+---
 
-👉 Watch the demo here: [YouTube Link](https://youtu.be/OoTsanXN-Rg)
+## ✨ Key Features
 
-> 📎 See `report.pdf` for the complete wiring diagram.
+- 🎙️ **Real-Time Speech Recognition** powered by Whisper AI
+- ✍️ **Natural Handwriting Simulation** with customizable fonts
+- 🛠️ **Precision GRBL-Based Motion Control** for accurate plotting
+- 🚀 **Simple Voice Operation** for intuitive user experience
+- 💰 **Budget-Friendly DIY Design** using standard CNC components
+- 💻 **Laptop-Driven Processing** (no specialized microcontrollers needed)
+- 🔌 **Plug-and-Play Setup** with minimal configuration
 
-## Hardware Components
-- Arduino UNO + CNC Shield
-- Stepper Motors (NEMA 17) with A4988/DRV8825 Drivers
-- Servo Motor (Pen up/down)
-- Custom 2-axis Cartesian Frame
-- 12V 4A Power Supply
-- USB-connected Laptop (with microphone)
-- (Optional) Limit Switches
+---
 
-## Software Requirements
-- Python 3.x
-- `speech_recognition`, `torch`, `whisper`, `pyserial`, `freetype-py`
+## 🎬 Live Demonstration
 
-## Setup Instructions
+![Voice-Activated Cartesian Bot in Action](images/demo.gif)
+
+**[▶️ Watch the Full Demo on YouTube](https://youtu.be/OoTsanXN-Rg)**
+
+---
+
+## 🔧 Hardware Components
+
+| Component | Description | Purpose |
+|-----------|-------------|---------|
+| Arduino UNO + CNC Shield | Control board | Core motion controller |
+| NEMA 17 Stepper Motors | With A4988/DRV8825 drivers | X/Y axis movement |
+| Servo Motor | SG90 or equivalent | Pen up/down mechanism |
+| 2-Axis Frame | Custom Cartesian design | Structural foundation |
+| Power Supply | 12V 4A | System power |
+| Laptop | With microphone | Speech processing |
+| Limit Switches | Optional | Homing and safety |
+
+> 📑 Complete wiring diagrams and assembly instructions available in `report.pdf`
+
+---
+
+## 💾 Software Requirements
+
+- Python 3.8+
+- Key libraries:
+  - `torch` and `whisper` for speech recognition
+  - `pyserial` for Arduino communication
+  - `freetype-py` for font rendering
+  - `speech_recognition` for audio input
+
+---
+
+## 🚀 Getting Started
+
+### Installation
+
 ```bash
-# Step 1: Clone the repo
+# Clone the repository
 git clone https://github.com/jebarson-caleb/Voice-Activated-Cartesian-Bot-VOABT-.git
 cd Voice-Activated-Cartesian-Bot-VOABT-
 
-# Step 2: Install dependencies
+# Set up virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-# For Whisper & Torch (may vary based on your system):
-pip install torch whisper
-
-# Step 3: Connect hardware (see COA report.pdf)
 ```
 
-## Running the Bot
+### Hardware Setup
+
+1. Assemble the CNC frame according to the diagrams in `report.pdf`
+2. Connect the Arduino to your laptop via USB
+3. Wire the stepper motors to the CNC shield
+4. Attach the servo for pen control
+5. Connect the power supply
+
+### Running the System
+
 ```bash
-python main.py  # Replace with actual filename
+python main.py
 ```
 
-## How It Works
-1. The script records your voice.
-2. Whisper transcribes speech into text.
-3. Text is converted into G-code with font styling.
-4. G-code is sent to the CNC bot.
-5. Bot writes the message using pen control and motion.
+---
 
-## Folder Structure
+## ⚙️ How It Works
+
+1. **Voice Input**: System continuously monitors for speech via the laptop microphone
+2. **Speech Recognition**: Whisper AI converts spoken words to text with high accuracy
+3. **Text Processing**: Input is formatted and prepared for writing
+4. **G-code Generation**: Text is converted to machine instructions with font styling
+5. **Motion Control**: Arduino executes the G-code, moving the pen to write text
+6. **Output**: Natural-looking handwritten text appears on paper
+
+---
+
+## 📁 Project Structure
+
 ```
 Voice-Activated-Cartesian-Bot-VOABT-/
-├── report.pdf
-├── main.py
-├── requirements.txt
-├── LICENSE
-├── README.md
-├── fonts/
-├── images/
+├── main.py                 # Primary control script
+├── report.pdf              # Detailed documentation
+├── requirements.txt        # Dependencies
+├── README.md               # This file
+├── LICENSE                 # MIT License
+├── fonts/                  # TrueType fonts for handwriting styles
+├── images/                 # Documentation images and demo GIFs
 │   └── demo.gif
-└── mechanical_design/
+├── mechanical_design/      # 3D printable files
 │   └── STL files
-├── grbl/
-│   └──
+└── grbl/                   # GRBL configuration
 ```
 
-## Future Improvements
-- ✅ Limit switch logic integration
-- 📐 Paper clamping mechanism
-- 🎛️ Voice commands for bot control
-- 🌐 Multilingual support
-- 🖥️ GUI for simplified user interaction
+---
 
-## License
-This project is licensed under the [MIT License](LICENSE).
+## 🔮 Future Development Roadmap
 
-## Contact
-**Jebarson Caleb D**  
-Email: jebarsoncalebd@gmail.com
+| Feature | Status | Description |
+|---------|--------|-------------|
+| Limit Switch Integration | ✅ Implemented | Safety boundaries and auto-homing |
+| Paper Clamping System | 🔄 In Progress | Secure paper positioning |
+| Voice Control Commands | 🔄 In Progress | System control via verbal instructions |
+| Multilingual Support | 📝 Planned | Recognition of multiple languages |
+| User-Friendly GUI | 📝 Planned | Graphical interface for settings |
+| Handwriting Style Selection | 📝 Planned | Choose between different fonts |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📞 Contact
+
+**Jebarson Caleb D**
+- 📧 Email: jebarsoncalebd@gmail.com
+- 🔗 GitHub: [jebarson-caleb](https://github.com/jebarson-caleb)
+- 🌐 LinkedIn: [jebarson-caleb](https://linkedin.com/in/jebarson-caleb)
+
+---
+
+<p align="center">
+  <sub>Built with ❤️ for accessibility and independence</sub>
+</p>
